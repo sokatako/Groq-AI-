@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>專業 AI 聊天助手</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <div id="app-layout" class="app-layout">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <button id="new-chat-btn">➕ 新增聊天</button>
+        <div class="model-selector-container">
+            <label for="model-selector">選擇模型:</label>
+            <select id="model-selector">
+              <optgroup label="Meta Llama 3">
+                <option value="llama3-8b-8192">Llama 3 (8B)</option>
+                <option value="llama3-70b-8192">Llama 3 (70B)</option>
+              </optgroup>
+              <optgroup label="Mistral AI">
+                <option value="mixtral-8x7b-32768">Mixtral (8x7B)</option>
+              </optgroup>
+              <optgroup label="Google Gemma">
+                <option value="gemma-7b-it">Gemma (7B)</option>
+                <option value="gemma2-9b-it">Gemma 2 (9B)</option>
+              </optgroup>
+              <optgroup label="Other Models">
+                  <option value="llama-3.1-8b-instant">Llama 3.1 (8B Instant)</option>
+                  <option value="llama-3.1-70b-versatile">Llama 3.1 (70B Versatile)</option>
+              </optgroup>
+            </select>
+        </div>
+      </div>
+      <div id="history-list" class="history-list"></div>
+      <div class="sidebar-footer">
+        <label for="import-file-input" class="theme-btn" title="匯入對話紀錄">📥</label>
+        <button type="button" id="export-btn" class="theme-btn" title="匯出對話紀錄">📤</button>
+        <input type="file" id="import-file-input" accept=".json" style="display: none;">
+        <button type="button" id="dark-btn" class="theme-btn active" title="深色模式">🌙</button>
+        <button type="button" id="light-btn" class="theme-btn" title="淺色模式">☀️</button>
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <button id="sidebar-toggle-btn" title="收合/展開側欄">«</button>
+      <div class="header">
+        <h2 id="chat-title">🧠 AI 聊天助手</h2>
+      </div>
+      <div id="chatbox" class="chat-box"></div>
+      <button id="scroll-to-bottom-btn" title="回到最下方">⬇️</button>
+      
+      <form id="chat-form">
+        <div id="file-preview-container"></div>
+        <div class="input-area">
+          <label for="file-upload-input" class="attach-btn" title="附加檔案">📎</label>
+          <input type="file" id="file-upload-input" style="display: none;">
+          <textarea id="user-input" placeholder="請輸入問題..." required rows="1"></textarea>
+          <button type="submit">送出</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
